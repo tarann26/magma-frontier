@@ -84,6 +84,15 @@ Stated here because they are stated in the write-ups too.
 - Depth-2 taxonomy is computationally impractical; depth-0 needs the namespace table
   extended from 23 to 98 entries first. Both unrun.
 
+## Corpus access
+
+The corpus is third party and gated, and is not redistributed here. To run anything against
+it you need to accept the terms on
+[HuggingFace](https://huggingface.co/datasets/hkust-nlp/Toolathlon-Trajectories) and be
+logged in. The adapter's test fixture is two real records from it, rebuilt locally with
+`uv run python scripts/build_fixture.py`; the tests that depend on it skip without it, so
+`uv run pytest` passes either way.
+
 ## Licence
 
-Code under MIT. The corpus is third-party, CC-BY-4.0, and is not redistributed here.
+Code under MIT. Corpus CC-BY-4.0, © the Toolathlon authors, not included.

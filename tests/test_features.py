@@ -8,6 +8,11 @@ from pathlib import Path
 
 FIXTURE = Path(__file__).parent / "fixtures" / "toolathlon_sample.jsonl"
 
+pytestmark = pytest.mark.skipif(
+    not FIXTURE.exists(),
+    reason="fixture holds gated corpus records; rebuild with scripts/build_fixture.py",
+)
+
 
 def _fixture_sessions():
     return [parse_line(l) for l in FIXTURE.read_text().splitlines() if l.strip()]

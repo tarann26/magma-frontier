@@ -6,6 +6,11 @@ from magma_frontier.corpus import SkipReport, build_corpus, load_sessions
 
 FIXTURE = Path(__file__).parent / "fixtures" / "toolathlon_sample.jsonl"
 
+pytestmark = pytest.mark.skipif(
+    not FIXTURE.exists(),
+    reason="fixture holds gated corpus records; rebuild with scripts/build_fixture.py",
+)
+
 
 def test_load_sessions_parses_fixture(tmp_path):
     target = tmp_path / "gpt-5-mini_1.jsonl"

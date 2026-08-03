@@ -13,6 +13,11 @@ from magma_frontier.schema import validate_session
 
 FIXTURE = Path(__file__).parent / "fixtures" / "toolathlon_sample.jsonl"
 
+pytestmark = pytest.mark.skipif(
+    not FIXTURE.exists(),
+    reason="fixture holds gated corpus records; rebuild with scripts/build_fixture.py",
+)
+
 
 def _lines():
     return [l for l in FIXTURE.read_text().splitlines() if l.strip()]
